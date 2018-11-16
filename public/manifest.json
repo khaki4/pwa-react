@@ -1,0 +1,21 @@
+{
+	"name": "pwa-react",
+	"short_name": "pwa-react",
+	"icons": [
+		{
+			"src": "icon-144x144.png",
+			"sizes": "144x144",
+			"type": "image/png"
+		},
+		{
+			"src": "icon-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		}
+	],
+	"start_url": "./?utm_source=web_app_manifest",
+	"display": "standalone",
+	"orientation": "natural",
+	"background_color": "#FFFFFF",
+	"theme_color": "#3F51B5"
+}
