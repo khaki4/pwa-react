@@ -9,8 +9,8 @@ const fabStyle = {
   right: '20px',
 };
 export default class Users extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       users: {},
