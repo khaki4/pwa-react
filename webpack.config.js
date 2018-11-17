@@ -25,6 +25,9 @@ module.exports = {
     new CopyWebpackPlugin([{
       context: './public',
       from: '*.*'
+    }, {
+      from: './src/firebase-messaging-sw.js',
+      to: 'firebase-messaging-sw.js'
     }]),
     new SWPrecacheWebpackPlugin({
       staticFileGlobs: [
