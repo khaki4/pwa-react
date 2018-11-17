@@ -11,3 +11,7 @@ pwa-manifest ./public --icons=$(if-got icons search --query="facebook react reac
 yarn add -D -E sw-precache-webpack-plugin-loader copy-webpack-plugin
 
 yarn add -D -E babel-plugin-syntax-dynamic-import
+
+webpack-bundle-analyzer
+
+babel-preset-es2015 babel-plugin-transform-imports
