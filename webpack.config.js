@@ -1,15 +1,17 @@
 'use strict';
 const path = require('path');
+const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin-loader');
 
 module.exports = {
   entry: {
-    app: ['./src/main.js']
+    main: ['./src/main.js'],
+    vendor: ['react', 'react-dom']
   },
   output: {
     path: path.resolve(__dirname, './build'),
-    filename: 'main.js'
+    filename: '[name].js'
   },
   module: {
     rules: [{
@@ -20,6 +22,11 @@ module.exports = {
         loader: "babel-loader"
       }]
     }]
+  },
+  optimization: {
+    runtimeChunk: {
+      name: 'vendor'
+    }
   },
   plugins: [
     new CopyWebpackPlugin([{
