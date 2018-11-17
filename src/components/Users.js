@@ -53,7 +53,9 @@ export default class Users extends Component {
       nextState.dialog !== this.state.dialog;
   }
 
-  handleDialogToggle = () => this.setState({dialog: true})
+  handleDialogToggle = () => this.setState({dialog: !this.state.dialog})
+
+  handleDialogClose = () => this.setState({dialog: false})
 
   handleSubmit = () => {
     const user = {
@@ -87,12 +89,12 @@ export default class Users extends Component {
         </FloatingActionButton>
         <Dialog
           title={"Adding New User"}
-          actions={<FlatButton label="Submit" primary onTouchEnd={this.handleSubmit}/>}
+          actions={<FlatButton label="Submit" primary onTouchEnd={this.handleSubmit} />}
           label="Submit"
           primary
           modal={false}
           open={this.state.dialog}
-          onRequestClose={this.handleDialogToggle}
+          onClose={this.handleDialogClose}
         >
           <div>Input Your Name</div>
           <TextField hintText="Name" name="name" ref={ref => this.nameText = ref} />

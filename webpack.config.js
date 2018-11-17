@@ -5,7 +5,7 @@ const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin-loader');
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    app: ['./src/main.js']
   },
   output: {
     path: path.resolve(__dirname, './build'),
