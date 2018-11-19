@@ -1,21 +1,6 @@
 {
   "presets": ["react-app"],
   "plugins": [
-    // 배열의 첫 번째 요소로 배열(transform-imports 플러그인 정보를 담은)이 옴.
-    // 그 배열 안에는 transform-imports 플러그인 임을 알려주는 요소가 첫 번째로 들어와있고,
-    // 두 번째 요소로 객체가 들어오는데 이는 react-router 모듈에 대한 객체이다.
-    // transform 프로퍼티에서 어떤 폴더를 기점으로 모듈들을 일일이 불러올지 기술했다고 보면 될 것 같다.
-    // preventFullImport, 쓰지도 않는 녀석은 불러오지 않는 걸(트리 쉐이킹) true로 지정
-    "syntax-dynamic-import",
-    ["transform-imports", {
-      "react-router-dom": {
-        "transform": "react-router-dom/es/${member}",
-        "preventFullImport": true
-      },
-      "lodash": {
-        "transform": "lodash/${member}",
-        "preventFullImport": true
-      }
-    }]
+    "syntax-dynamic-import"
   ]
 }

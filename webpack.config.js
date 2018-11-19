@@ -3,6 +3,8 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin-loader');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -25,11 +27,55 @@ module.exports = {
     }]
   },
   optimization: {
-    runtimeChunk: {
-      name: 'vendor'
+    minimizer: [
+      new UglifyJSPlugin({
+        sourceMap: true,
+        uglifyOptions: {
+          compress: {
+            inline: false
+          }
+        }
+      })
+    ],
+    runtimeChunk: false,
+    splitChunks: {
+      cacheGroups: {
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        },
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        common: {
+          test: /node_modules/,
+          chunks: "all",
+          name: 'common',
+          enforce: true
+        }
+      }
     }
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html,',
+      template: './public/index.html',
+      favicon: './public/favicon.ico',
+      minify: {
+        collapseWhitespace: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        removeComments: true,
+        removeEmptyAttributes: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true
+      }
+    }),
     new CopyWebpackPlugin([{
       context: './public',
       from: '*.*'
