@@ -5,6 +5,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin-loader');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const production = process.env.NODE_ENV === 'production';
+const devtool = production ? 'cheap-moule-source-map' : 'cheap-module-eval-source-map';
+const cunkFilename = production ? '[name].[chunkhash].js' : '[name].js';
 
 module.exports = {
   entry: {
@@ -13,8 +16,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './build'),
-    filename: '[name].js',
-    chunkFilename: '[name].js'
+    filename: cunkFilename,
+    chunkFilename: cunkFilename
   },
   module: {
     rules: [{
