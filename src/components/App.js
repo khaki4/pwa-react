@@ -9,17 +9,16 @@ const Home = asyncComponent(() => {
     './Home'
     ).then(module => module.default || module);
 });
+
 const Users = asyncComponent(() => {
   return import(
     /* webpackChunkName: "users" */
-    /* webpackPrefetch: true */
     './Users'
     ).then(module => module.default || module);
 });
 const Notification = asyncComponent(() => {
   return import(
     /* webpackChunkName: "notification" */
-    /* webpackPrefetch: true */
     './Notification'
     ).then(module => module.default || module);
 });
